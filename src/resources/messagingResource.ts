@@ -25,15 +25,30 @@ import type {
   IChatUnPinMessagePayload,
   IChatUnStarMessagePayload,
   IChatUpdatePayload,
+  IDmClosePayload,
+  IDmCountersQuery,
+  IDmCreatePayload,
+  IDmDeletePayload,
+  IDmFilesQuery,
+  IDmHistoryQuery,
+  IDmListEveryoneQuery,
+  IDmMembersQuery,
+  IDmMessagesOthersQuery,
+  IDmMessagesQuery,
+  IDmOpenPayload,
+  IDmSetTopicPayload,
   IHeaders,
   ResponsePromise,
 } from "../types";
 
 
 // # Description:
-// #   - **Chat**: Create and manage chat messages, threads, reactions, and message operations.
+// #   - **Chat**: Create and manage chat [messages](https://docs.rocket.chat/use-rocket.chat/user-guides/messages/message-actions).
+// #   - **DM**: Create and manage direct messages. The DM (dm.*) and IM (im.*) endpoint groups provide identical functionality.
+// #     For example, im.close and dm.close execute the same operation.
 
-class ChatResource extends BaseResource {
+class MessagingResource extends BaseResource {
+    // Chat endpoints
     /**
      * @description Deletes a chat message,
      * accepts payload with roomId, msgId, and optional asUser
@@ -333,6 +348,151 @@ class ChatResource extends BaseResource {
         const path = `/api/v1/chat.getURLPreview${this.addQuery(query)}`;
         return this.client.request("GET", path, {}, {}, customHeaders);
     }
+
+    // DM endpoints
+    /**
+     * @description Closes a direct message,
+     * accepts payload with roomId
+     */
+    dmClose(
+        payload: IDmClosePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.close`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets counters and information for a DM,
+     * accepts query with roomId and optional userId
+     */
+    dmCounters(
+        query: IDmCountersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.counters${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Creates a direct message session,
+     * accepts payload with username, usernames, or excludeSelf
+     */
+    dmCreate(
+        payload: IDmCreatePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.create`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
+
+    /**
+     * @description Deletes a direct message,
+     * accepts payload with roomId or username
+     */
+    dmDelete(
+        payload: IDmDeletePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.delete`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets files in a DM,
+     * accepts query with roomId or username and optional pagination/filtering params
+     */
+    dmFiles(
+        query: IDmFilesQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.files${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets message history from a DM,
+     * accepts query with roomId or username and optional pagination/filtering params
+     */
+    dmHistory(
+        query: IDmHistoryQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.history${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Lists all DMs in the workspace (admin permission required),
+     * accepts query with optional pagination/filtering params
+     */
+    dmListEveryone(
+        query: IDmListEveryoneQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.list.everyone${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets members of a DM,
+     * accepts query with roomId or username and optional pagination params
+     */
+    dmMembers(
+        query: IDmMembersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.members${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets messages in a DM,
+     * accepts query with roomId or username and optional filtering/pagination params
+     */
+    dmMessages(
+        query: IDmMessagesQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.messages${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Gets messages in a DM from others' perspective (admin permission required),
+     * accepts query with roomId and optional pagination/filtering params
+     */
+    dmMessagesOthers(
+        query: IDmMessagesOthersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.messages.others${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
+
+    /**
+     * @description Opens a direct message,
+     * accepts payload with roomId
+     */
+    dmOpen(
+        payload: IDmOpenPayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.open`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
+
+    /**
+     * @description Sets the topic of a DM,
+     * accepts payload with roomId and topic
+     */
+    dmSetTopic(
+        payload: IDmSetTopicPayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.setTopic`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 }
 
-export default ChatResource;
+export default MessagingResource;

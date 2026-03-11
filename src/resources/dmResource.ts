@@ -1,182 +1,167 @@
-import { RocketChatClient } from "../client";
-import { RocketChatResponse, DirectMessage } from "../types";
+import { BaseResource } from "./baseResource";
+import type {
+  IDmClosePayload,
+  IDmCountersQuery,
+  IDmCreatePayload,
+  IDmDeletePayload,
+  IDmFilesQuery,
+  IDmHistoryQuery,
+  IDmListEveryoneQuery,
+  IDmMembersQuery,
+  IDmMessagesOthersQuery,
+  IDmMessagesQuery,
+  IDmOpenPayload,
+  IDmSetTopicPayload,
+  IHeaders,
+  ResponsePromise,
+} from "../types";
 
-export class DirectMessageResource {
-  constructor(private client: RocketChatClient) {}
 
-  /**
-   * Create a direct message session
-   */
-  async create(
-    username: string,
-  ): Promise<RocketChatResponse<{ room: DirectMessage }>> {
-    return this.client.post("/dm.create", {
-      username,
-    });
-  }
+// # Description:
+// #   - **DM**: Create and manage direct messages. The DM (dm.*) and IM (im.*) endpoint groups provide identical functionality.
+// #     For example, im.close and dm.close execute the same operation.
 
-  /**
-   * Get direct message information
-   */
-  async info(
-    roomId?: string,
-    username?: string,
-  ): Promise<RocketChatResponse<{ room: DirectMessage }>> {
-    const params: any = {};
-    if (roomId) params.roomId = roomId;
-    if (username) params.username = username;
+class DmResource extends BaseResource {
+    /**
+     * @description Closes a direct message,
+     * accepts payload with roomId
+     */
+    close(
+        payload: IDmClosePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.close`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 
-    return this.client.get("/dm.info", params);
-  }
+    /**
+     * @description Gets counters and information for a DM,
+     * accepts query with roomId and optional userId
+     */
+    counters(
+        query: IDmCountersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.counters${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-  /**
-   * List direct messages
-   */
-  async list(
-    offset = 0,
-    count = 50,
-    sort?: Record<string, number>,
-  ): Promise<RocketChatResponse<{ ims: DirectMessage[] }>> {
-    return this.client.get("/dm.list", {
-      offset,
-      count,
-      sort: sort ? JSON.stringify(sort) : undefined,
-    });
-  }
+    /**
+     * @description Creates a direct message session,
+     * accepts payload with username, usernames, or excludeSelf
+     */
+    create(
+        payload: IDmCreatePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.create`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 
-  /**
-   * List everyone on the server
-   */
-  async listEveryone(
-    offset = 0,
-    count = 50,
-    sort?: Record<string, number>,
-  ): Promise<RocketChatResponse<{ ims: DirectMessage[] }>> {
-    return this.client.get("/dm.list.everyone", {
-      offset,
-      count,
-      sort: sort ? JSON.stringify(sort) : undefined,
-    });
-  }
+    /**
+     * @description Deletes a direct message,
+     * accepts payload with roomId or username
+     */
+    delete(
+        payload: IDmDeletePayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.delete`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 
-  /**
-   * Get direct message history
-   */
-  async history(
-    roomId: string,
-    latest?: Date,
-    oldest?: Date,
-    inclusive?: boolean,
-    offset = 0,
-    count = 20,
-  ): Promise<RocketChatResponse<{ messages: any[] }>> {
-    const params: any = {
-      roomId,
-      offset,
-      count,
-    };
+    /**
+     * @description Gets files in a DM,
+     * accepts query with roomId or username and optional pagination/filtering params
+     */
+    files(query: IDmFilesQuery, customHeaders: IHeaders = {}): ResponsePromise {
+        const path = `/api/v1/dm.files${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-    if (latest) params.latest = latest.toISOString();
-    if (oldest) params.oldest = oldest.toISOString();
-    if (inclusive !== undefined) params.inclusive = inclusive;
+    /**
+     * @description Gets message history from a DM,
+     * accepts query with roomId or username and optional pagination/filtering params
+     */
+    history(
+        query: IDmHistoryQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.history${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-    return this.client.get("/dm.history", params);
-  }
+    /**
+     * @description Lists all DMs in the workspace (admin permission required),
+     * accepts query with optional pagination/filtering params
+     */
+    listEveryone(
+        query: IDmListEveryoneQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.list.everyone${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-  /**
-   * Get direct message counters
-   */
-  async counters(
-    roomId?: string,
-    username?: string,
-  ): Promise<
-    RocketChatResponse<{
-      joined: boolean;
-      members: number;
-      unreads: number;
-      unreadsFrom: Date;
-      msgs: number;
-      latest: Date;
-      userMentions: number;
-    }>
-  > {
-    const params: any = {};
-    if (roomId) params.roomId = roomId;
-    if (username) params.username = username;
+    /**
+     * @description Gets members of a DM,
+     * accepts query with roomId or username and optional pagination params
+     */
+    members(
+        query: IDmMembersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.members${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-    return this.client.get("/dm.counters", params);
-  }
+    /**
+     * @description Gets messages in a DM,
+     * accepts query with roomId or username and optional filtering/pagination params
+     */
+    messages(
+        query: IDmMessagesQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.messages${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-  /**
-   * Get direct message members
-   */
-  async members(
-    roomId?: string,
-    username?: string,
-    offset = 0,
-    count = 50,
-  ): Promise<RocketChatResponse<{ members: any[] }>> {
-    const params: any = {
-      offset,
-      count,
-    };
-    if (roomId) params.roomId = roomId;
-    if (username) params.username = username;
+    /**
+     * @description Gets messages in a DM from others' perspective (admin permission required),
+     * accepts query with roomId and optional pagination/filtering params
+     */
+    messagesOthers(
+        query: IDmMessagesOthersQuery,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.messages.others${this.addQuery(query)}`;
+        return this.client.request("GET", path, {}, {}, customHeaders);
+    }
 
-    return this.client.get("/dm.members", params);
-  }
+    /**
+     * @description Opens a direct message,
+     * accepts payload with roomId
+     */
+    open(
+        payload: IDmOpenPayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.open`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 
-  /**
-   * Get direct message messages
-   */
-  async messages(
-    roomId?: string,
-    username?: string,
-    offset = 0,
-    count = 20,
-    sort?: Record<string, number>,
-  ): Promise<RocketChatResponse<{ messages: any[] }>> {
-    const params: any = {
-      offset,
-      count,
-    };
-    if (roomId) params.roomId = roomId;
-    if (username) params.username = username;
-    if (sort) params.sort = JSON.stringify(sort);
-
-    return this.client.get("/dm.messages", params);
-  }
-
-  /**
-   * Close a direct message
-   */
-  async close(roomId?: string, username?: string): Promise<RocketChatResponse> {
-    const data: any = {};
-    if (roomId) data.roomId = roomId;
-    if (username) data.username = username;
-
-    return this.client.post("/dm.close", data);
-  }
-
-  /**
-   * Hide a direct message
-   */
-  async hide(roomId?: string, username?: string): Promise<RocketChatResponse> {
-    const data: any = {};
-    if (roomId) data.roomId = roomId;
-    if (username) data.username = username;
-
-    return this.client.post("/dm.hide", data);
-  }
-
-  /**
-   * Open a direct message
-   */
-  async open(roomId?: string, username?: string): Promise<RocketChatResponse> {
-    const data: any = {};
-    if (roomId) data.roomId = roomId;
-    if (username) data.username = username;
-
-    return this.client.post("/dm.open", data);
-  }
+    /**
+     * @description Sets the topic of a DM,
+     * accepts payload with roomId and topic
+     */
+    setTopic(
+        payload: IDmSetTopicPayload,
+        customHeaders: IHeaders = {},
+    ): ResponsePromise {
+        const path = `/api/v1/dm.setTopic`;
+        return this.client.request("POST", path, payload, {}, customHeaders);
+    }
 }
+
+export default DmResource;

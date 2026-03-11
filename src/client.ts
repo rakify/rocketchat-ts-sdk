@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, Method } from "axios";
 import { RocketChatConfig, RocketChatResponse } from "./types";
 
 export class RocketChatClient {
@@ -78,9 +78,10 @@ export class RocketChatClient {
   async get<T = any>(
     endpoint: string,
     params?: Record<string, any>,
+    headers?: Record<string, string>,
   ): Promise<RocketChatResponse<T>> {
     try {
-      const response = await this.api.get(endpoint, { params });
+      const response = await this.api.get(endpoint, { params, headers });
       return {
         success: true,
         data: response.data,
@@ -96,9 +97,10 @@ export class RocketChatClient {
   async post<T = any>(
     endpoint: string,
     data?: any,
+    headers?: Record<string, string>,
   ): Promise<RocketChatResponse<T>> {
     try {
-      const response = await this.api.post(endpoint, data);
+      const response = await this.api.post(endpoint, data, { headers });
       return {
         success: true,
         data: response.data,
@@ -114,9 +116,10 @@ export class RocketChatClient {
   async put<T = any>(
     endpoint: string,
     data?: any,
+    headers?: Record<string, string>,
   ): Promise<RocketChatResponse<T>> {
     try {
-      const response = await this.api.put(endpoint, data);
+      const response = await this.api.put(endpoint, data, { headers });
       return {
         success: true,
         data: response.data,
@@ -129,9 +132,49 @@ export class RocketChatClient {
     }
   }
 
-  async delete<T = any>(endpoint: string): Promise<RocketChatResponse<T>> {
+  async delete<T = any>(
+    endpoint: string,
+    headers?: Record<string, string>,
+  ): Promise<RocketChatResponse<T>> {
     try {
-      const response = await this.api.delete(endpoint);
+      const response = await this.api.delete(endpoint, { headers });
+      return {
+        success: true,
+        data: response.data,
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        error: error.response?.data?.error || error.message,
+      };
+    }
+  }
+
+  async request<T = any>(
+    method: Method,
+    endpoint: string,
+    data?: any,
+    params?: Record<string, any>,
+    headers?: Record<string, string>,
+    isMultipart?: boolean,
+  ): Promise<RocketChatResponse<T>> {
+    try {
+      const config: AxiosRequestConfig = {
+        method,
+        url: endpoint,
+        data,
+        params,
+        headers,
+      };
+
+      if (isMultipart) {
+        config.headers = {
+          ...headers,
+          "Content-Type": "multipart/form-data",
+        };
+      }
+
+      const response = await this.api.request(config);
       return {
         success: true,
         data: response.data,

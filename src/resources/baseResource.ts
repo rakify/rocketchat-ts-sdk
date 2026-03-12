@@ -7,7 +7,7 @@ export class BaseResource {
     this.client = client;
   }
 
-  protected addQuery(query?: Record<string, any>): string {
+  protected addQuery(query?: Record<string, any>) {
     if (!query || Object.keys(query).length === 0) {
       return "";
     }
@@ -15,11 +15,16 @@ export class BaseResource {
     const params = new URLSearchParams();
 
     for (const [key, value] of Object.entries(query)) {
-      if (value === undefined || value === null) {
+      if (value === undefined || value === null) continue;
+
+      if (Array.isArray(value)) {
+        for (const item of value) {
+          params.append(`${key}[]`, String(item));
+        }
         continue;
       }
 
-      if (Array.isArray(value) || typeof value === "object") {
+      if (typeof value === "object") {
         params.append(key, JSON.stringify(value));
         continue;
       }
@@ -27,7 +32,7 @@ export class BaseResource {
       params.append(key, String(value));
     }
 
-    const queryString = params.toString();
-    return queryString ? `?${queryString}` : "";
+    const qs = params.toString();
+    return qs ? `?${qs}` : "";
   }
 }

@@ -41,458 +41,454 @@ import type {
   ResponsePromise,
 } from "../types";
 
-
 // # Description:
 // #   - **Chat**: Create and manage chat [messages](https://docs.rocket.chat/use-rocket.chat/user-guides/messages/message-actions).
 // #   - **DM**: Create and manage direct messages. The DM (dm.*) and IM (im.*) endpoint groups provide identical functionality.
 // #     For example, im.close and dm.close execute the same operation.
 
 class MessagingResource extends BaseResource {
-    // Chat endpoints
-    /**
-     * @description Deletes a chat message,
-     * accepts payload with roomId, msgId, and optional asUser
-     */
-    delete(
-        payload: IChatDeletePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.delete`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  // Chat endpoints
+  /**
+   * @description Deletes a chat message,
+   * accepts payload with roomId, msgId, and optional asUser
+   */
+  delete(
+    payload: IChatDeletePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.delete`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Reacts to or unreacts from a chat message,
-     * accepts payload with messageId, emoji or reaction, and shouldReact
-     */
-    react(
-        payload: IChatReactPayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.react`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Reacts to or unreacts from a chat message,
+   * accepts payload with messageId, emoji or reaction, and shouldReact
+   */
+  react(
+    payload: IChatReactPayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.react`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Updates a chat message,
-     * accepts payload with roomId, msgId, text, and optional previewUrls and customFields
-     */
-    update(
-        payload: IChatUpdatePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.update`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Updates a chat message,
+   * accepts payload with roomId, msgId, text, and optional previewUrls and customFields
+   */
+  update(
+    payload: IChatUpdatePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.update`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Reports a chat message,
-     * accepts payload with messageId and description
-     */
-    reportMessage(
-        payload: IChatReportMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.reportMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Reports a chat message,
+   * accepts payload with messageId and description
+   */
+  reportMessage(
+    payload: IChatReportMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.reportMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Follows a message to receive notifications,
-     * accepts payload with mid (message ID)
-     */
-    followMessage(
-        payload: IChatFollowMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.followMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Follows a message to receive notifications,
+   * accepts payload with mid (message ID)
+   */
+  followMessage(
+    payload: IChatFollowMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.followMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets a specific message,
-     * accepts query with msgId
-     */
-    getMessage(
-        query: IChatGetMessageQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getMessage${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets a specific message,
+   * accepts query with msgId
+   */
+  getMessage(
+    query: IChatGetMessageQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getMessage${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets threads list in a room,
-     * accepts query with rid and optional pagination/filtering params
-     */
-    getThreadsList(
-        query: IChatGetThreadsListQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getThreadsList${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets threads list in a room,
+   * accepts query with rid and optional pagination/filtering params
+   */
+  getThreadsList(
+    query: IChatGetThreadsListQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getThreadsList${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets deleted messages in a room,
-     * accepts query with roomId, since date, and optional pagination params
-     */
-    getDeletedMessages(
-        query: IChatGetDeletedMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getDeletedMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets deleted messages in a room,
+   * accepts query with roomId, since date, and optional pagination params
+   */
+  getDeletedMessages(
+    query: IChatGetDeletedMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getDeletedMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets discussions in a room,
-     * accepts query with roomId and optional pagination/filtering params
-     */
-    getDiscussions(
-        query: IChatGetDiscussionsQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getDiscussions${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets discussions in a room,
+   * accepts query with roomId and optional pagination/filtering params
+   */
+  getDiscussions(
+    query: IChatGetDiscussionsQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getDiscussions${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets messages where user is mentioned,
-     * accepts query with roomId and optional pagination params
-     */
-    getMentionedMessages(
-        query: IChatGetMentionedMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getMentionedMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets messages where user is mentioned,
+   * accepts query with roomId and optional pagination params
+   */
+  getMentionedMessages(
+    query: IChatGetMentionedMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getMentionedMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets read receipts for a message,
-     * accepts query with messageId and optional pagination params
-     */
-    getMessageReadReceipts(
-        query: IChatGetMessageReadReceiptsQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getMessageReadReceipts${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets read receipts for a message,
+   * accepts query with messageId and optional pagination params
+   */
+  getMessageReadReceipts(
+    query: IChatGetMessageReadReceiptsQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getMessageReadReceipts${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets pinned messages in a room,
-     * accepts query with roomId and optional pagination params
-     */
-    getPinnedMessages(
-        query: IChatGetPinnedMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getPinnedMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets pinned messages in a room,
+   * accepts query with roomId and optional pagination params
+   */
+  getPinnedMessages(
+    query: IChatGetPinnedMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getPinnedMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets starred messages in a room,
-     * accepts query with roomId and optional pagination params
-     */
-    getStarredMessages(
-        query: IChatGetStarredMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getStarredMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets starred messages in a room,
+   * accepts query with roomId and optional pagination params
+   */
+  getStarredMessages(
+    query: IChatGetStarredMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getStarredMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets messages in a thread,
-     * accepts query with tmid and optional pagination/filtering params
-     */
-    getThreadMessages(
-        query: IChatGetThreadMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getThreadMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets messages in a thread,
+   * accepts query with tmid and optional pagination/filtering params
+   */
+  getThreadMessages(
+    query: IChatGetThreadMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getThreadMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Ignores or unignores a user in chat,
-     * accepts query with rid, userId, and ignore flag
-     */
-    ignoreUser(
-        query: IChatIgnoreUserQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.ignoreUser${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Ignores or unignores a user in chat,
+   * accepts query with rid, userId, and ignore flag
+   */
+  ignoreUser(
+    query: IChatIgnoreUserQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.ignoreUser${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Pins a message to the channel,
-     * accepts payload with messageId
-     */
-    pinMessage(
-        payload: IChatPinMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.pinMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Pins a message to the channel,
+   * accepts payload with messageId
+   */
+  pinMessage(
+    payload: IChatPinMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.pinMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Unpins a message from the channel,
-     * accepts payload with messageId
-     */
-    unPinMessage(
-        payload: IChatUnPinMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.unPinMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Unpins a message from the channel,
+   * accepts payload with messageId
+   */
+  unPinMessage(
+    payload: IChatUnPinMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.unPinMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Posts a message to a channel or user,
-     * accepts payload with roomId or channel, text, and optional attachments, alias, etc.
-     */
-    postMessage(
-        payload: IChatPostMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.postMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Posts a message to a channel or user,
+   * accepts payload with roomId or channel, text, and optional attachments, alias, etc.
+   */
+  postMessage(
+    payload: IChatPostMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.postMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Sends a message with custom ID support,
-     * accepts payload with message object and optional previewUrls
-     */
-    sendMessage(
-        payload: IChatSendMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.sendMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Sends a message with custom ID support,
+   * accepts payload with message object and optional previewUrls
+   */
+  sendMessage(
+    payload: IChatSendMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.sendMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Stars a message,
-     * accepts payload with messageId
-     */
-    starMessage(
-        payload: IChatStarMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.starMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Stars a message,
+   * accepts payload with messageId
+   */
+  starMessage(
+    payload: IChatStarMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.starMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Unstars a message,
-     * accepts payload with messageId
-     */
-    unStarMessage(
-        payload: IChatUnStarMessagePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.unStarMessage`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Unstars a message,
+   * accepts payload with messageId
+   */
+  unStarMessage(
+    payload: IChatUnStarMessagePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.unStarMessage`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Syncs threads list with updates from a date,
-     * accepts query with rid, updatedSince, and optional filtering params
-     */
-    syncThreadsList(
-        query: IChatSyncThreadsListQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.syncThreadsList${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Syncs threads list with updates from a date,
+   * accepts query with rid, updatedSince, and optional filtering params
+   */
+  syncThreadsList(
+    query: IChatSyncThreadsListQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.syncThreadsList${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Syncs thread messages with updates from a date,
-     * accepts query with updatedSince, tmid, and optional pagination/filtering params
-     */
-    syncThreadMessages(
-        query: IChatSyncThreadMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.syncThreadMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Syncs thread messages with updates from a date,
+   * accepts query with updatedSince, tmid, and optional pagination/filtering params
+   */
+  syncThreadMessages(
+    query: IChatSyncThreadMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.syncThreadMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Syncs messages in a room with updates,
-     * accepts query with roomId and optional sync/pagination params
-     */
-    syncMessages(
-        query: IChatSyncMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.syncMessages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Syncs messages in a room with updates,
+   * accepts query with roomId and optional sync/pagination params
+   */
+  syncMessages(
+    query: IChatSyncMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.syncMessages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets URL preview for messages,
-     * accepts query with roomId and url
-     */
-    getURLPreview(
-        query: IChatGetURLPreviewQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/chat.getURLPreview${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets URL preview for messages,
+   * accepts query with roomId and url
+   */
+  getURLPreview(
+    query: IChatGetURLPreviewQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/chat.getURLPreview${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    // DM endpoints
-    /**
-     * @description Closes a direct message,
-     * accepts payload with roomId
-     */
-    dmClose(
-        payload: IDmClosePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.close`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  // DM endpoints
+  /**
+   * @description Closes a direct message,
+   * accepts payload with roomId
+   */
+  dmClose(
+    payload: IDmClosePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.close`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets counters and information for a DM,
-     * accepts query with roomId and optional userId
-     */
-    dmCounters(
-        query: IDmCountersQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.counters${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets counters and information for a DM,
+   * accepts query with roomId and optional userId
+   */
+  dmCounters(
+    query: IDmCountersQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.counters${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Creates a direct message session,
-     * accepts payload with username, usernames, or excludeSelf
-     */
-    dmCreate(
-        payload: IDmCreatePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.create`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Creates a direct message session,
+   * accepts payload with username, usernames, or excludeSelf
+   */
+  dmCreate(
+    payload: IDmCreatePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.create`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Deletes a direct message,
-     * accepts payload with roomId or username
-     */
-    dmDelete(
-        payload: IDmDeletePayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.delete`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Deletes a direct message,
+   * accepts payload with roomId or username
+   */
+  dmDelete(
+    payload: IDmDeletePayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.delete`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets files in a DM,
-     * accepts query with roomId or username and optional pagination/filtering params
-     */
-    dmFiles(
-        query: IDmFilesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.files${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets files in a DM,
+   * accepts query with roomId or username and optional pagination/filtering params
+   */
+  dmFiles(query: IDmFilesQuery, customHeaders: IHeaders = {}): ResponsePromise {
+    const path = `/dm.files${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets message history from a DM,
-     * accepts query with roomId or username and optional pagination/filtering params
-     */
-    dmHistory(
-        query: IDmHistoryQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.history${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets message history from a DM,
+   * accepts query with roomId or username and optional pagination/filtering params
+   */
+  dmHistory(
+    query: IDmHistoryQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.history${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Lists all DMs in the workspace (admin permission required),
-     * accepts query with optional pagination/filtering params
-     */
-    dmListEveryone(
-        query: IDmListEveryoneQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.list.everyone${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Lists all DMs in the workspace (admin permission required),
+   * accepts query with optional pagination/filtering params
+   */
+  dmListEveryone(
+    query: IDmListEveryoneQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.list.everyone${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets members of a DM,
-     * accepts query with roomId or username and optional pagination params
-     */
-    dmMembers(
-        query: IDmMembersQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.members${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets members of a DM,
+   * accepts query with roomId or username and optional pagination params
+   */
+  dmMembers(
+    query: IDmMembersQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.members${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets messages in a DM,
-     * accepts query with roomId or username and optional filtering/pagination params
-     */
-    dmMessages(
-        query: IDmMessagesQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.messages${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets messages in a DM,
+   * accepts query with roomId or username and optional filtering/pagination params
+   */
+  dmMessages(
+    query: IDmMessagesQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.messages${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Gets messages in a DM from others' perspective (admin permission required),
-     * accepts query with roomId and optional pagination/filtering params
-     */
-    dmMessagesOthers(
-        query: IDmMessagesOthersQuery,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.messages.others${this.addQuery(query)}`;
-        return this.client.request("GET", path, {}, {}, customHeaders);
-    }
+  /**
+   * @description Gets messages in a DM from others' perspective (admin permission required),
+   * accepts query with roomId and optional pagination/filtering params
+   */
+  dmMessagesOthers(
+    query: IDmMessagesOthersQuery,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.messages.others${this.addQuery(query)}`;
+    return this.client.request("GET", path, {}, {}, customHeaders);
+  }
 
-    /**
-     * @description Opens a direct message,
-     * accepts payload with roomId
-     */
-    dmOpen(
-        payload: IDmOpenPayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.open`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Opens a direct message,
+   * accepts payload with roomId
+   */
+  dmOpen(
+    payload: IDmOpenPayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.open`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 
-    /**
-     * @description Sets the topic of a DM,
-     * accepts payload with roomId and topic
-     */
-    dmSetTopic(
-        payload: IDmSetTopicPayload,
-        customHeaders: IHeaders = {},
-    ): ResponsePromise {
-        const path = `/api/v1/dm.setTopic`;
-        return this.client.request("POST", path, payload, {}, customHeaders);
-    }
+  /**
+   * @description Sets the topic of a DM,
+   * accepts payload with roomId and topic
+   */
+  dmSetTopic(
+    payload: IDmSetTopicPayload,
+    customHeaders: IHeaders = {},
+  ): ResponsePromise {
+    const path = `/dm.setTopic`;
+    return this.client.request("POST", path, payload, {}, customHeaders);
+  }
 }
 
 export default MessagingResource;

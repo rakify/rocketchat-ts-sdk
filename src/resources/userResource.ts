@@ -10,7 +10,7 @@ class ChatUserResource extends BaseResource {
     query?: IUserListQuery,
     customHeaders: IHeaders = {},
   ): ResponsePromise {
-    const path = `/api/v1/users.list${this.addQuery(query)}`;
+    const path = `/users.list${this.addQuery(query)}`;
     return this.client.request("GET", path, {}, {}, customHeaders);
   }
 
@@ -22,13 +22,14 @@ class ChatUserResource extends BaseResource {
     userIds: string[],
     customHeaders: IHeaders = {},
   ): ResponsePromise {
-    const query = { ids: userIds };
-    const path = `/api/v1/users.presence${this.addQuery(query)}`;
+    const idsArray = Array.isArray(userIds) ? userIds : [];
+    const query = { ids: idsArray };
+    const path = `/users.presence${this.addQuery(query)}`;
     return this.client.request("GET", path, {}, {}, customHeaders);
   }
 
   chatWhoAmI(customHeaders: IHeaders = {}): ResponsePromise {
-    const path = `/api/v1/me`;
+    const path = `/me`;
     return this.client.request("GET", path, {}, {}, customHeaders);
   }
 }

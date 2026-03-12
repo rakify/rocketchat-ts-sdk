@@ -4,7 +4,7 @@
 import { IMongoDate } from "./dm";
 
 // Use SDK types where possible but extend for WebSocket-specific properties
-export interface RocketChatMessage {
+export interface IWebsocketRocketChatMessage {
   _id: string;
   rid: string;
   msg: string;
@@ -18,10 +18,23 @@ export interface RocketChatMessage {
   urls?: any[];
   mentions?: any[];
   channels?: any[];
-  md?: any[];
+  md?: Array<{
+    type: string;
+    value: Array<{
+      type: string;
+      value: string;
+    }>;
+  }>;
+  file?: {
+    _id: string;
+    name: string;
+    type: string;
+    size: number;
+    format: string;
+  };
 }
 
-export interface RocketChatRoomUpdate {
+export interface IWebsocketRocketChatRoom {
   _id: string;
   t: string;
   usernames: string[];
@@ -34,11 +47,11 @@ export interface RocketChatRoomUpdate {
   sysMes: boolean;
   _USERNAMES?: string[];
   _updatedAt: IMongoDate;
-  lastMessage?: RocketChatMessage;
+  lastMessage?: IWebsocketRocketChatMessage;
   lm?: IMongoDate;
 }
 
-export interface RocketChatSubscriptionUpdate {
+export interface IWebsocketRocketChatSubscription {
   _id: string;
   u: {
     _id: string;
@@ -65,7 +78,7 @@ export interface RoomChangedEvent {
   id: string;
   fields: {
     eventName: string; // Format: "userId/rooms-changed"
-    args: ["updated" | "inserted" | "removed", RocketChatRoomUpdate];
+    args: ["updated" | "inserted" | "removed", IWebsocketRocketChatRoom];
   };
 }
 
@@ -75,7 +88,10 @@ export interface SubscriptionChangedEvent {
   id: string;
   fields: {
     eventName: string; // Format: "userId/subscriptions-changed"
-    args: ["updated" | "inserted" | "removed", RocketChatSubscriptionUpdate];
+    args: [
+      "updated" | "inserted" | "removed",
+      IWebsocketRocketChatSubscription,
+    ];
   };
 }
 
@@ -85,7 +101,7 @@ export interface RoomMessageEvent {
   id: string;
   fields: {
     eventName: string; // Room ID
-    args: [RocketChatMessage];
+    args: [IWebsocketRocketChatMessage];
   };
 }
 
@@ -121,18 +137,19 @@ export type WebSocketEvent =
   | RoomMessageEvent
   | PresenceUpdateEvent;
 
-export interface WebSocketMessageData {
+export interface IWebSocketMessageData {
   msg?: string;
   collection?: string;
   fields?: {
     eventName?: string;
     args?:
-      | RocketChatMessage[]
-      | [string, RocketChatRoomUpdate]
-      | [string, RocketChatSubscriptionUpdate]
-      | [RocketChatMessage]
+      | IWebsocketRocketChatMessage[]
+      | [string, IWebsocketRocketChatRoom]
+      | [string, IWebsocketRocketChatSubscription]
+      | [IWebsocketRocketChatMessage]
       | [PresenceUpdateArgs];
   };
   id?: string;
   error?: any;
+  subs?: string[];
 }

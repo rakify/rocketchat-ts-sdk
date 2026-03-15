@@ -15,6 +15,11 @@ export interface IWebsocketRocketChatMessage {
     name?: string;
   };
   _updatedAt: IMongoDate;
+  editedAt?: IMongoDate;
+  editedBy?: {
+    _id: string;
+    username: string;
+  };
   urls?: any[];
   mentions?: any[];
   channels?: any[];

@@ -24,6 +24,16 @@ export interface IDmMessageAttachment {
   video_url?: string;
 }
 
+export interface IDmMessageSnippet {
+  text: string;
+  md: IMarkdownNode[];
+  message_link: string;
+  author_name: string;
+  author_icon: string;
+  attachments: (IDmMessageAttachment | IDmMessageSnippet)[];
+  ts: IMongoDate;
+}
+
 export interface IDmMessage {
   _id: string;
   rid: string;
@@ -41,7 +51,7 @@ export interface IDmMessage {
     username: string;
   };
   blocks?: MessageBlock[];
-  attachments?: IDmMessageAttachment[];
+  attachments?: (IDmMessageAttachment | IDmMessageSnippet)[];
   file?: any;
   files?: any[];
 }

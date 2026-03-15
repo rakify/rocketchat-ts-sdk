@@ -21,6 +21,8 @@ export interface IUserListQuery {
   sort?: Record<string, number>;
   fields?: Record<string, number>;
   query?: Record<string, any>;
+  roles?: string[];
+  searchTerm?: string;
 }
 
 export interface IUserListResponse {
@@ -44,7 +46,38 @@ export interface IUserInfoData {
   name: string;
   _updatedAt: string;
   statusConnection: string;
+  avatarETag: string;
   avatarUrl: string;
   isOAuthUser: boolean;
   success: boolean;
+}
+
+export interface IUserByStatus {
+  _id: string;
+  username: string;
+  emails: Array<{
+    address: string;
+    verified: boolean;
+  }>;
+  type: string;
+  roles: string[];
+  status: string;
+  active: boolean;
+  name: string;
+  lastLogin: string;
+}
+
+export interface IUserListByStatusResponse {
+  users: IUserByStatus[];
+  count: number;
+  offset: number;
+  total: number;
+  success: boolean;
+}
+
+export interface IUserSetAvatarRequest {
+  avatarUrl?: string;
+  userId?: string;
+  username?: string;
+  image?: File;
 }

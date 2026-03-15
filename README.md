@@ -15,11 +15,11 @@ A comprehensive TypeScript SDK for the RocketChat API, providing easy-to-use met
 ## Installation
 
 ```bash
-npm install rocketchat-sdk
+npm install rocketchat-ts-sdk
 # or
-yarn add rocketchat-sdk
+yarn add rocketchat-ts-sdk
 # or
-pnpm add rocketchat-sdk
+pnpm add rocketchat-ts-sdk
 ```
 
 ## Quick Start
@@ -27,7 +27,7 @@ pnpm add rocketchat-sdk
 ### Basic Setup
 
 ```typescript
-import { RocketChatSDK } from "rocketchat-sdk";
+import { RocketChatSDK } from "rocketchat-ts-sdk";
 
 const rocketChat = new RocketChatSDK({
   baseUrl: "https://your-rocketchat-server.com",
@@ -328,8 +328,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## Support
 
 - 📖 [API Documentation](https://developer.rocket.chat/reference/api)
-- 🐛 [Report Issues](https://github.com/yourusername/rocketchat-sdk/issues)
-- 💬 [Discussions](https://github.com/yourusername/rocketchat-sdk/discussions)
+- 🐛 [Report Issues](https://github.com/rakify/rocketchat-ts-sdk/issues)
+- 💬 [Discussions](https://github.com/rakify/rocketchat-ts-sdk/discussions)
 
 ## Changelog
 

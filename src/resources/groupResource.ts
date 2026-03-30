@@ -46,9 +46,18 @@ class GroupResource extends BaseResource {
   groupArchive(
     payload: IGroupArchivePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.archive`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -58,9 +67,18 @@ class GroupResource extends BaseResource {
   groupClose(
     payload: IGroupClosePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.close`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -70,9 +88,18 @@ class GroupResource extends BaseResource {
   groupCounters(
     query: IGroupCountersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.counters${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -82,9 +109,18 @@ class GroupResource extends BaseResource {
   groupCreate(
     payload: IGroupCreatePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.create`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -94,9 +130,18 @@ class GroupResource extends BaseResource {
   groupDelete(
     payload: IGroupDeletePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.delete`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -106,9 +151,18 @@ class GroupResource extends BaseResource {
   groupFiles(
     query: IGroupFilesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.files${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -118,9 +172,18 @@ class GroupResource extends BaseResource {
   groupHistory(
     query: IGroupHistoryQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.history${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -130,9 +193,18 @@ class GroupResource extends BaseResource {
   groupInfo(
     query: IGroupInfoQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.info${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -142,9 +214,18 @@ class GroupResource extends BaseResource {
   groupInvite(
     payload: IGroupInvitePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.invite`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -154,9 +235,18 @@ class GroupResource extends BaseResource {
   groupKick(
     payload: IGroupKickPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.kick`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -166,9 +256,18 @@ class GroupResource extends BaseResource {
   groupLeave(
     payload: IGroupLeavePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.leave`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -178,9 +277,18 @@ class GroupResource extends BaseResource {
   groupList(
     query?: IGroupListQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.list${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -190,9 +298,18 @@ class GroupResource extends BaseResource {
   groupListAll(
     query?: IGroupListAllQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.listAll${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -202,9 +319,18 @@ class GroupResource extends BaseResource {
   groupMembers(
     query: IGroupMembersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.members${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -214,9 +340,18 @@ class GroupResource extends BaseResource {
   groupMessages(
     query: IGroupMessagesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.messages${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -226,9 +361,18 @@ class GroupResource extends BaseResource {
   groupModerators(
     query: IGroupModeratorsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.moderators${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -238,9 +382,18 @@ class GroupResource extends BaseResource {
   groupOpen(
     payload: IGroupOpenPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.open`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -250,9 +403,18 @@ class GroupResource extends BaseResource {
   groupAddAll(
     payload: IGroupAddAllPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.addAll`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -262,9 +424,18 @@ class GroupResource extends BaseResource {
   groupAddLeader(
     payload: IGroupAddLeaderPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.addLeader`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -274,9 +445,18 @@ class GroupResource extends BaseResource {
   groupAddModerator(
     payload: IGroupAddModeratorPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.addModerator`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -286,9 +466,18 @@ class GroupResource extends BaseResource {
   groupAddOwner(
     payload: IGroupAddOwnerPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.addOwner`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -298,9 +487,18 @@ class GroupResource extends BaseResource {
   groupRemoveLeader(
     payload: IGroupRemoveLeaderPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.removeLeader`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -310,9 +508,18 @@ class GroupResource extends BaseResource {
   groupRemoveModerator(
     payload: IGroupRemoveModeratorPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.removeModerator`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -322,9 +529,18 @@ class GroupResource extends BaseResource {
   groupRemoveOwner(
     payload: IGroupRemoveOwnerPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.removeOwner`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -334,9 +550,18 @@ class GroupResource extends BaseResource {
   groupRename(
     payload: IGroupRenamePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.rename`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -346,9 +571,18 @@ class GroupResource extends BaseResource {
   groupSetAnnouncement(
     payload: IGroupSetAnnouncementPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setAnnouncement`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -358,9 +592,18 @@ class GroupResource extends BaseResource {
   groupSetDescription(
     payload: IGroupSetDescriptionPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setDescription`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -370,9 +613,18 @@ class GroupResource extends BaseResource {
   groupSetPurpose(
     payload: IGroupSetPurposePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setPurpose`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -382,9 +634,18 @@ class GroupResource extends BaseResource {
   groupSetReadOnly(
     payload: IGroupSetReadOnlyPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setReadOnly`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -394,9 +655,18 @@ class GroupResource extends BaseResource {
   groupSetTopic(
     payload: IGroupSetTopicPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setTopic`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -406,9 +676,18 @@ class GroupResource extends BaseResource {
   groupSetType(
     payload: IGroupSetTypePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.setType`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -418,9 +697,18 @@ class GroupResource extends BaseResource {
   groupUnarchive(
     payload: IGroupUnarchivePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.unarchive`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -430,9 +718,18 @@ class GroupResource extends BaseResource {
   groupGetIntegrations(
     query: IGroupGetIntegrationsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.getIntegrations${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -442,9 +739,18 @@ class GroupResource extends BaseResource {
   groupConvertToTeam(
     payload: IGroupConvertToTeamPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/groups.convertToTeam`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

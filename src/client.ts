@@ -157,6 +157,7 @@ export class RocketChatClient {
     params?: Record<string, any>,
     headers?: Record<string, string>,
     isMultipart?: boolean,
+    signal?: AbortSignal,
   ): Promise<RocketChatResponse<T>> {
     try {
       const config: AxiosRequestConfig = {
@@ -165,6 +166,7 @@ export class RocketChatClient {
         data,
         params,
         headers,
+        signal,
       };
 
       if (isMultipart) {

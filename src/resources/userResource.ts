@@ -14,9 +14,18 @@ class ChatUserResource extends BaseResource {
   userList(
     query?: IUserListQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/users.list${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -26,9 +35,18 @@ class ChatUserResource extends BaseResource {
   userListByStatus(
     query?: IUserListQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/users.listByStatus${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -38,16 +56,36 @@ class ChatUserResource extends BaseResource {
   userPresence(
     userIds: string[],
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const idsArray = Array.isArray(userIds) ? userIds : [];
     const query = { ids: idsArray };
     const path = `/users.presence${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
-  chatWhoAmI(customHeaders: IHeaders = {}): ResponsePromise {
+  chatWhoAmI(
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise {
     const path = `/me`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -58,6 +96,7 @@ class ChatUserResource extends BaseResource {
   setAvatar(
     options: IUserSetAvatarRequest,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/users.setAvatar`;
 
@@ -74,6 +113,7 @@ class ChatUserResource extends BaseResource {
         {},
         customHeaders,
         true,
+        signal,
       );
     } else if (options.avatarUrl) {
       // Use JSON body for URL
@@ -82,7 +122,15 @@ class ChatUserResource extends BaseResource {
         ...(options.userId && { userId: options.userId }),
         ...(options.username && { username: options.username }),
       };
-      return this.client.request("POST", path, data, {}, customHeaders);
+      return this.client.request(
+        "POST",
+        path,
+        data,
+        {},
+        customHeaders,
+        false,
+        signal,
+      );
     } else {
       throw new Error("Either avatarUrl or image must be provided");
     }

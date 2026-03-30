@@ -28,9 +28,18 @@ class DmResource extends BaseResource {
   close(
     payload: IDmClosePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.close`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -40,9 +49,18 @@ class DmResource extends BaseResource {
   counters(
     query: IDmCountersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.counters${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -52,9 +70,18 @@ class DmResource extends BaseResource {
   create(
     payload: IDmCreatePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.create`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -64,18 +91,39 @@ class DmResource extends BaseResource {
   delete(
     payload: IDmDeletePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.delete`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
    * @description Gets files in a DM,
    * accepts query with roomId or username and optional pagination/filtering params
    */
-  files(query: IDmFilesQuery, customHeaders: IHeaders = {}): ResponsePromise {
+  files(
+    query: IDmFilesQuery,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise {
     const path = `/dm.files${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -85,9 +133,18 @@ class DmResource extends BaseResource {
   history(
     query: IDmHistoryQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.history${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -97,9 +154,18 @@ class DmResource extends BaseResource {
   listEveryone(
     query: IDmListEveryoneQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.list.everyone${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -109,9 +175,18 @@ class DmResource extends BaseResource {
   members(
     query: IDmMembersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.members${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -121,9 +196,18 @@ class DmResource extends BaseResource {
   messages(
     query: IDmMessagesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.messages${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -133,18 +217,39 @@ class DmResource extends BaseResource {
   messagesOthers(
     query: IDmMessagesOthersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.messages.others${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
    * @description Opens a direct message,
    * accepts payload with roomId
    */
-  open(payload: IDmOpenPayload, customHeaders: IHeaders = {}): ResponsePromise {
+  open(
+    payload: IDmOpenPayload,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise {
     const path = `/dm.open`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -154,9 +259,18 @@ class DmResource extends BaseResource {
   setTopic(
     payload: IDmSetTopicPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/dm.setTopic`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

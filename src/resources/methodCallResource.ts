@@ -16,9 +16,18 @@ class MethodCallResource extends BaseResource {
   loadHistory(
     payload: IChatMethodCallPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/method.call/loadHistory`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

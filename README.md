@@ -281,6 +281,35 @@ const client = rocketChat.getClient();
 // Add custom interceptors, headers, etc.
 ```
 
+### Request Cancellation with AbortSignal
+
+You can cancel requests using the optional `signal` parameter with AbortController:
+
+```typescript
+// Create an AbortController
+const controller = new AbortController();
+const { signal } = controller;
+
+// Use the signal with any API method
+const messagePromise = rocketChat.chat.getMessage(
+  { msgId: "message-id" },
+  {}, // custom headers
+  signal, // optional AbortSignal
+);
+
+// Cancel the request if needed
+controller.abort();
+
+// The promise will reject with an AbortError
+try {
+  const result = await messagePromise;
+} catch (error) {
+  if (error.name === "AbortError") {
+    console.log("Request was cancelled");
+  }
+}
+```
+
 ## TypeScript Support
 
 The SDK is built with TypeScript and provides comprehensive type definitions:

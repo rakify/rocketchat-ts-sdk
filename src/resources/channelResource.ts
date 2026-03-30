@@ -51,9 +51,18 @@ class ChannelResource extends BaseResource {
   channelClose(
     payload: IChannelClosePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.close`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -63,9 +72,18 @@ class ChannelResource extends BaseResource {
   channelCounters(
     query: IChannelCountersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.counters${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -75,9 +93,18 @@ class ChannelResource extends BaseResource {
   channelCreate(
     payload: IChannelCreatePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.create`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -87,9 +114,18 @@ class ChannelResource extends BaseResource {
   channelDelete(
     payload: IChannelDeletePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.delete`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -99,9 +135,18 @@ class ChannelResource extends BaseResource {
   channelFiles(
     query: IChannelFilesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.files${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -111,9 +156,18 @@ class ChannelResource extends BaseResource {
   channelHistory(
     query: IChannelHistoryQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.history${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -123,9 +177,18 @@ class ChannelResource extends BaseResource {
   channelInfo(
     query: IChannelInfoQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.info${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -135,9 +198,18 @@ class ChannelResource extends BaseResource {
   channelInvite(
     payload: IChannelInvitePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.invite`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -147,9 +219,18 @@ class ChannelResource extends BaseResource {
   channelJoin(
     payload: IChannelJoinPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.join`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -159,9 +240,18 @@ class ChannelResource extends BaseResource {
   channelKick(
     payload: IChannelKickPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.kick`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -171,9 +261,18 @@ class ChannelResource extends BaseResource {
   channelLeave(
     payload: IChannelLeavePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.leave`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -183,9 +282,18 @@ class ChannelResource extends BaseResource {
   channelList(
     query?: IChannelListQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.list${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -195,9 +303,18 @@ class ChannelResource extends BaseResource {
   channelListJoined(
     query?: IChannelListJoinedQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.list.joined${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -207,9 +324,18 @@ class ChannelResource extends BaseResource {
   channelMembers(
     query: IChannelMembersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.members${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -219,9 +345,18 @@ class ChannelResource extends BaseResource {
   channelMessages(
     query: IChannelMessagesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.messages${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -231,9 +366,18 @@ class ChannelResource extends BaseResource {
   channelModerators(
     query: IChannelModeratorsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.moderators${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -243,9 +387,18 @@ class ChannelResource extends BaseResource {
   channelOnline(
     query: IChannelOnlineQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.online${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -255,9 +408,18 @@ class ChannelResource extends BaseResource {
   channelRoles(
     query: IChannelRolesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.roles${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -267,9 +429,18 @@ class ChannelResource extends BaseResource {
   channelGetAllUserMentionsByChannel(
     query: IChannelGetAllUserMentionsByChannelQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.getAllUserMentionsByChannel${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -279,9 +450,18 @@ class ChannelResource extends BaseResource {
   channelGetIntegrations(
     query: IChannelGetIntegrationsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.getIntegrations${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -291,9 +471,18 @@ class ChannelResource extends BaseResource {
   channelOpen(
     payload: IChannelOpenPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.open`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -303,9 +492,18 @@ class ChannelResource extends BaseResource {
   channelArchive(
     payload: IChannelArchivePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.archive`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -315,9 +513,18 @@ class ChannelResource extends BaseResource {
   channelAddAll(
     payload: IChannelAddAllPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.addAll`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -327,9 +534,18 @@ class ChannelResource extends BaseResource {
   channelAddLeader(
     payload: IChannelAddLeaderPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.addLeader`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -339,9 +555,18 @@ class ChannelResource extends BaseResource {
   channelAddModerator(
     payload: IChannelAddModeratorPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.addModerator`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -351,9 +576,18 @@ class ChannelResource extends BaseResource {
   channelAddOwner(
     payload: IChannelAddOwnerPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.addOwner`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -363,9 +597,18 @@ class ChannelResource extends BaseResource {
   channelRemoveLeader(
     payload: IChannelRemoveLeaderPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.removeLeader`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -375,9 +618,18 @@ class ChannelResource extends BaseResource {
   channelRemoveModerator(
     payload: IChannelRemoveModeratorPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.removeModerator`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -387,9 +639,18 @@ class ChannelResource extends BaseResource {
   channelRemoveOwner(
     payload: IChannelRemoveOwnerPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.removeOwner`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -399,9 +660,18 @@ class ChannelResource extends BaseResource {
   channelRename(
     payload: IChannelRenamePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.rename`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -411,9 +681,18 @@ class ChannelResource extends BaseResource {
   channelSetAnnouncement(
     payload: IChannelSetAnnouncementPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setAnnouncement`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -423,9 +702,18 @@ class ChannelResource extends BaseResource {
   channelSetDescription(
     payload: IChannelSetDescriptionPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setDescription`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -435,9 +723,18 @@ class ChannelResource extends BaseResource {
   channelSetJoinCode(
     payload: IChannelSetJoinCodePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setJoinCode`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -447,9 +744,18 @@ class ChannelResource extends BaseResource {
   channelSetPurpose(
     payload: IChannelSetPurposePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setPurpose`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -459,9 +765,18 @@ class ChannelResource extends BaseResource {
   channelSetReadOnly(
     payload: IChannelSetReadOnlyPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setReadOnly`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -471,9 +786,18 @@ class ChannelResource extends BaseResource {
   channelSetTopic(
     payload: IChannelSetTopicPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setTopic`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -483,9 +807,18 @@ class ChannelResource extends BaseResource {
   channelSetType(
     payload: IChannelSetTypePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.setType`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -495,9 +828,18 @@ class ChannelResource extends BaseResource {
   channelUnarchive(
     payload: IChannelUnarchivePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.unarchive`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -507,9 +849,18 @@ class ChannelResource extends BaseResource {
   channelConvertToTeam(
     payload: IChannelConvertToTeamPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/channels.convertToTeam`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

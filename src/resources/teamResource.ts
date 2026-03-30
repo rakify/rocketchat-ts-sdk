@@ -21,9 +21,18 @@ class TeamResource extends BaseResource {
   teamListAll(
     query?: ITeamListAllQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.listAll${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -33,9 +42,18 @@ class TeamResource extends BaseResource {
   teamList(
     query?: ITeamListQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.list${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -45,9 +63,18 @@ class TeamResource extends BaseResource {
   teamInfo(
     query: ITeamInfoQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.info${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -57,9 +84,18 @@ class TeamResource extends BaseResource {
   teamAddRoom(
     payload: ITeamAddRoomPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.addRoom`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -69,9 +105,18 @@ class TeamResource extends BaseResource {
   teamRemoveRoom(
     payload: ITeamRemoveRoomPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.removeRoom`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -81,9 +126,18 @@ class TeamResource extends BaseResource {
   teamUpdateRoom(
     payload: ITeamUpdateRoomPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.updateRoom`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -93,9 +147,18 @@ class TeamResource extends BaseResource {
   teamListRooms(
     query: ITeamListRoomsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.listRooms${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -105,9 +168,18 @@ class TeamResource extends BaseResource {
   teamListRoomsOfUser(
     query: ITeamListRoomsOfUserQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.listRoomsOfUser${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -117,9 +189,18 @@ class TeamResource extends BaseResource {
   teamListChildren(
     query: ITeamListChildrenQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/teams.listChildren${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

@@ -36,9 +36,18 @@ class RoomResource extends BaseResource {
   roomAdminRooms(
     query: IRoomAdminRoomsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.adminRooms${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -48,9 +57,18 @@ class RoomResource extends BaseResource {
   roomCleanHistory(
     payload: IRoomCleanHistoryPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.cleanHistory`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -60,9 +78,18 @@ class RoomResource extends BaseResource {
   roomInfo(
     query: IRoomInfoQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.info${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -72,9 +99,18 @@ class RoomResource extends BaseResource {
   roomGetDiscussions(
     query: IRoomGetDiscussionsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.getDiscussions${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -84,9 +120,18 @@ class RoomResource extends BaseResource {
   roomGet(
     query?: IRoomGetQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.get${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -96,9 +141,18 @@ class RoomResource extends BaseResource {
   roomLeave(
     payload: IRoomLeavePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.leave`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -108,9 +162,18 @@ class RoomResource extends BaseResource {
   roomDelete(
     payload: IRoomDeletePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.delete`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -120,9 +183,18 @@ class RoomResource extends BaseResource {
   roomFavorite(
     payload: IRoomFavoritePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.favorite`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -132,9 +204,18 @@ class RoomResource extends BaseResource {
   roomAutocompleteChannelAndPrivate(
     query: IRoomAutocompleteChannelAndPrivateQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.autocomplete.channelAndPrivate${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -144,9 +225,18 @@ class RoomResource extends BaseResource {
   roomAutocompleteAdminRooms(
     query: IRoomAutocompleteAdminRoomsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.autocomplete.adminRooms${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -156,9 +246,18 @@ class RoomResource extends BaseResource {
   roomAdminRoomsGetRoom(
     query: IRoomAdminRoomsGetRoomQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.adminRooms.getRoom${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -168,9 +267,18 @@ class RoomResource extends BaseResource {
   roomSaveRoomSettings(
     payload: IRoomSaveRoomSettingsPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.saveRoomSettings`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -180,9 +288,18 @@ class RoomResource extends BaseResource {
   roomNameExists(
     query: IRoomNameExistsQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.nameExists${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -192,9 +309,18 @@ class RoomResource extends BaseResource {
   roomChangeArchivationState(
     payload: IRoomChangeArchivationStatePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.changeArchivationState`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -204,9 +330,18 @@ class RoomResource extends BaseResource {
   roomExport(
     payload: IRoomExportPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.export`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -216,9 +351,18 @@ class RoomResource extends BaseResource {
   roomMuteUser(
     payload: IRoomMuteUserPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.muteUser`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -228,9 +372,18 @@ class RoomResource extends BaseResource {
   roomUnmuteUser(
     payload: IRoomUnmuteUserPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.unmuteUser`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -240,9 +393,18 @@ class RoomResource extends BaseResource {
   roomImages(
     query: IRoomImagesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.images${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -252,9 +414,18 @@ class RoomResource extends BaseResource {
   roomAuditMembers(
     query: IRoomAuditMembersQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/audit/rooms.members${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -264,9 +435,18 @@ class RoomResource extends BaseResource {
   roomHide(
     payload: IRoomHidePayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.hide`;
-    return this.client.request("POST", path, payload, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -276,6 +456,7 @@ class RoomResource extends BaseResource {
   roomMediaUpload(
     payload: IRoomMediaUploadPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const { rid, file, msg } = payload;
     const path = `/rooms.media/${rid}`;
@@ -285,7 +466,15 @@ class RoomResource extends BaseResource {
     if (msg) {
       formData.append("msg", msg);
     }
-    return this.client.request("POST", path, formData, {}, customHeaders, true); // true for multipart
+    return this.client.request(
+      "POST",
+      path,
+      formData,
+      {},
+      customHeaders,
+      true,
+      signal,
+    ); // true for multipart
   }
 
   /**
@@ -295,10 +484,19 @@ class RoomResource extends BaseResource {
   roomMediaConfirm(
     payload: IRoomMediaConfirmPayload,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const { rid, fileId } = payload;
     const path = `/rooms.mediaConfirm/${rid}/${fileId}`;
-    return this.client.request("POST", path, {}, {}, customHeaders);
+    return this.client.request(
+      "POST",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -308,9 +506,18 @@ class RoomResource extends BaseResource {
   roomRoles(
     query: IRoomRolesQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.roles${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 
   /**
@@ -320,9 +527,18 @@ class RoomResource extends BaseResource {
   roomAutocompleteChannelAndPrivateWithPagination(
     query: IRoomAutocompleteChannelAndPrivateWithPaginationQuery,
     customHeaders: IHeaders = {},
+    signal?: AbortSignal,
   ): ResponsePromise {
     const path = `/rooms.autocomplete.channelAndPrivate.withPagination${this.addQuery(query)}`;
-    return this.client.request("GET", path, {}, {}, customHeaders);
+    return this.client.request(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
   }
 }
 

@@ -1,3 +1,5 @@
+import { IDmMessage } from "./dm";
+
 export interface IRoomIdQuery {
   roomId: string;
 }
@@ -55,14 +57,12 @@ export interface IChannelDeletePayload {
 }
 
 export interface IChannelFilesQuery
-  extends IRoomIdOrNameQuery,
-    IPaginationQuery {
+  extends IRoomIdOrNameQuery, IPaginationQuery {
   sort?: string;
 }
 
 export interface IChannelHistoryQuery
-  extends IRoomIdOrNameQuery,
-    IPaginationQuery {
+  extends IRoomIdOrNameQuery, IPaginationQuery {
   latest?: string;
   oldest?: string;
   inclusive?: boolean;
@@ -104,8 +104,7 @@ export interface IChannelListJoinedQuery extends IPaginationQuery {
 }
 
 export interface IChannelMembersQuery
-  extends IRoomIdOrNameQuery,
-    IPaginationQuery {
+  extends IRoomIdOrNameQuery, IPaginationQuery {
   status?: string[];
   filter?: string;
 }
@@ -209,14 +208,12 @@ export interface IChannelUnarchivePayload {
 }
 
 export interface IChannelGetAllUserMentionsByChannelQuery
-  extends IRoomIdQuery,
-    IPaginationQuery {
+  extends IRoomIdQuery, IPaginationQuery {
   sort?: string;
 }
 
 export interface IChannelGetIntegrationsQuery
-  extends IRoomIdQuery,
-    IPaginationQuery {
+  extends IRoomIdQuery, IPaginationQuery {
   sort?: string;
   fields?: string;
   query?: string;
@@ -258,21 +255,17 @@ export interface IGroupAddLeaderPayload extends IChannelAddLeaderPayload {}
 export interface IGroupAddModeratorPayload extends IChannelAddModeratorPayload {}
 export interface IGroupAddOwnerPayload extends IChannelAddOwnerPayload {}
 export interface IGroupRemoveLeaderPayload extends IChannelRemoveLeaderPayload {}
-export interface IGroupRemoveModeratorPayload
-  extends IChannelRemoveModeratorPayload {}
+export interface IGroupRemoveModeratorPayload extends IChannelRemoveModeratorPayload {}
 export interface IGroupRemoveOwnerPayload extends IChannelRemoveOwnerPayload {}
 export interface IGroupRenamePayload extends IChannelRenamePayload {}
-export interface IGroupSetAnnouncementPayload
-  extends IChannelSetAnnouncementPayload {}
-export interface IGroupSetDescriptionPayload
-  extends IChannelSetDescriptionPayload {}
+export interface IGroupSetAnnouncementPayload extends IChannelSetAnnouncementPayload {}
+export interface IGroupSetDescriptionPayload extends IChannelSetDescriptionPayload {}
 export interface IGroupSetPurposePayload extends IChannelSetPurposePayload {}
 export interface IGroupSetReadOnlyPayload extends IChannelSetReadOnlyPayload {}
 export interface IGroupSetTopicPayload extends IChannelSetTopicPayload {}
 export interface IGroupSetTypePayload extends IChannelSetTypePayload {}
 export interface IGroupUnarchivePayload extends IChannelUnarchivePayload {}
-export interface IGroupGetIntegrationsQuery
-  extends IChannelGetIntegrationsQuery {}
+export interface IGroupGetIntegrationsQuery extends IChannelGetIntegrationsQuery {}
 
 export interface IGroupConvertToTeamPayload {
   roomId: string;
@@ -295,9 +288,7 @@ export interface IRoomCleanHistoryPayload {
 export interface IRoomInfoQuery extends IRoomIdOrNameQuery, IFieldsQuery {}
 
 export interface IRoomGetDiscussionsQuery
-  extends IRoomIdOrNameQuery,
-    IPaginationQuery,
-    IFieldsQuery {
+  extends IRoomIdOrNameQuery, IPaginationQuery, IFieldsQuery {
   sort?: string;
 }
 
@@ -379,7 +370,8 @@ export interface IRoomImagesQuery extends IRoomIdOrNameQuery, IPaginationQuery {
   query?: string;
 }
 
-export interface IRoomAuditMembersQuery extends IRoomIdQuery, IPaginationQuery {}
+export interface IRoomAuditMembersQuery
+  extends IRoomIdQuery, IPaginationQuery {}
 
 export interface IRoomHidePayload {
   roomId: string;
@@ -472,49 +464,6 @@ export interface IRocketChatUser {
   name?: string;
 }
 
-export interface IRocketChatMessage {
-  _id: string;
-  rid: string;
-  msg: string;
-  ts: string;
-  u: IRocketChatUser;
-  _updatedAt: string;
-  urls?: string[];
-  mentions?: any[];
-  channels?: any[];
-  md?: Array<{
-    type: string;
-    value: Array<{
-      type: string;
-      value: string;
-    }>;
-  }>;
-  file?: {
-    _id: string;
-    name: string;
-    type: string;
-    size: number;
-    format: string;
-  };
-}
-
-export interface IRocketChatRoom {
-  _id: string;
-  t: string;
-  usernames: string[];
-  usersCount: number;
-  msgs: number;
-  ts: string;
-  uids: string[];
-  default: boolean;
-  ro: boolean;
-  sysMes: boolean;
-  _updatedAt: string;
-  lastMessage?: IRocketChatMessage;
-  lm: string;
-  displayNames?: string[];
-}
-
 export interface ISubscription {
   _id: string;
   open: boolean;
@@ -537,7 +486,7 @@ export interface ISubscription {
   E2EKey?: string;
   usernames?: string[];
   lm?: string;
-  lastMessage?: IRocketChatMessage;
+  lastMessage?: IDmMessage;
   uids?: string[];
 }
 
@@ -548,7 +497,7 @@ export interface ISubscriptionsGetResponse {
 }
 
 export interface IRoomsGetResponse {
-  update: IRocketChatRoom[];
+  update: IDmMessage[];
   remove: string[];
   success: boolean;
 }

@@ -1,43 +1,7 @@
 // WebSocket-specific types for real-time message handling
 // These are custom implementations for handling WebSocket events and are not part of the SDK
 
-import { IMongoDate } from "./dm";
-
-// Use SDK types where possible but extend for WebSocket-specific properties
-export interface IWebsocketRocketChatMessage {
-  _id: string;
-  rid: string;
-  msg: string;
-  ts: IMongoDate;
-  u: {
-    _id: string;
-    username: string;
-    name?: string;
-  };
-  _updatedAt: IMongoDate;
-  editedAt?: IMongoDate;
-  editedBy?: {
-    _id: string;
-    username: string;
-  };
-  urls?: any[];
-  mentions?: any[];
-  channels?: any[];
-  md?: Array<{
-    type: string;
-    value: Array<{
-      type: string;
-      value: string;
-    }>;
-  }>;
-  file?: {
-    _id: string;
-    name: string;
-    type: string;
-    size: number;
-    format: string;
-  };
-}
+import { IDmMessage, IMongoDate } from "./dm";
 
 export interface IWebsocketRocketChatRoom {
   _id: string;
@@ -52,7 +16,7 @@ export interface IWebsocketRocketChatRoom {
   sysMes: boolean;
   _USERNAMES?: string[];
   _updatedAt: IMongoDate;
-  lastMessage?: IWebsocketRocketChatMessage;
+  lastMessage?: IDmMessage;
   lm?: IMongoDate;
 }
 
@@ -106,7 +70,7 @@ export interface RoomMessageEvent {
   id: string;
   fields: {
     eventName: string; // Room ID
-    args: [IWebsocketRocketChatMessage];
+    args: [IDmMessage];
   };
 }
 
@@ -148,10 +112,10 @@ export interface IWebSocketMessageData {
   fields?: {
     eventName?: string;
     args?:
-      | IWebsocketRocketChatMessage[]
+      | IDmMessage[]
       | [string, IWebsocketRocketChatRoom]
       | [string, IWebsocketRocketChatSubscription]
-      | [IWebsocketRocketChatMessage]
+      | [IDmMessage]
       | [PresenceUpdateArgs];
   };
   id?: string;

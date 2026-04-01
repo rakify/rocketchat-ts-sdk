@@ -482,7 +482,7 @@ export interface ISubscription {
     name: string;
   };
   _updatedAt: string;
-  ls: string;
+  ls?: string;
   E2EKey?: string;
   usernames?: string[];
   lm?: string;
@@ -492,13 +492,31 @@ export interface ISubscription {
 
 export interface ISubscriptionsGetResponse {
   update: ISubscription[];
-  remove: ISubscription[];
+  remove: Array<string | ISubscription>;
   success: boolean;
 }
 
+export interface IRoomSummary {
+  _id: string;
+  t: string;
+  usernames?: string[];
+  usersCount?: number;
+  msgs?: number;
+  ts: string;
+  uids?: string[];
+  default?: boolean;
+  ro?: boolean;
+  sysMes?: boolean;
+  _updatedAt: string;
+  lastMessage?: IDmMessage;
+  lm?: string;
+  name?: string;
+  u?: IRocketChatUser;
+}
+
 export interface IRoomsGetResponse {
-  update: IDmMessage[];
-  remove: string[];
+  update: IRoomSummary[];
+  remove: Array<string | IRoomSummary>;
   success: boolean;
 }
 
@@ -515,15 +533,52 @@ export interface IRoomMediaConfirmPayload {
   tmid?: string;
 }
 
-export interface IRoomMediaUploadResponse {
+export interface IRoomMediaUploadFileInfo {
   _id: string;
   url: string;
-  path?: string;
-  name: string;
-  size: number;
-  type: string;
-  rid: string;
-  userId: string;
-  uploadedAt: string;
+}
+
+export interface IRoomMediaUploadResponse {
+  file: IRoomMediaUploadFileInfo;
   success: boolean;
+}
+
+export interface IRoomMediaFile {
+  _id: string;
+  name: string;
+  type: string;
+  size: number;
+  format?: string;
+  typeGroup?: string;
+}
+
+export interface IRoomMediaImageDimensions {
+  width: number;
+  height: number;
+}
+
+export interface IRoomMediaAttachment {
+  title: string;
+  title_link: string;
+  title_link_download: boolean;
+  image_dimensions?: IRoomMediaImageDimensions;
+  image_preview?: string;
+  image_url?: string;
+  image_type?: string;
+  image_size?: number;
+  type: string;
+  fileId: string;
+}
+
+export interface IRoomMediaConfirmResponse {
+  _id: string;
+  rid: string;
+  ts: string;
+  msg: string;
+  file: IRoomMediaFile;
+  files: IRoomMediaFile[];
+  attachments: IRoomMediaAttachment[];
+  u: IRocketChatUser;
+  _updatedAt: string;
+  urls: string[];
 }

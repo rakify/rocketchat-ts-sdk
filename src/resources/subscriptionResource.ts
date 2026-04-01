@@ -1,5 +1,9 @@
 import { BaseResource } from "./baseResource";
-import type { IHeaders, ResponsePromise } from "../types";
+import type {
+  IHeaders,
+  ISubscriptionsGetResponse,
+  ResponsePromise,
+} from "../types";
 
 class SubscriptionResource extends BaseResource {
   /**
@@ -10,9 +14,9 @@ class SubscriptionResource extends BaseResource {
     query?: { updatedSince?: string },
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<ISubscriptionsGetResponse> {
     const path = `/subscriptions.get${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<ISubscriptionsGetResponse>(
       "GET",
       path,
       {},

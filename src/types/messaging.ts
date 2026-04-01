@@ -193,7 +193,7 @@ export interface IUser {
   name?: string;
 }
 
-export interface IRocketChatMethodCallResponse {
+export interface ILoadHistoryMethodCallResult {
   msg: string;
   id: string;
   result: {
@@ -205,4 +205,9 @@ export interface IRocketChatMethodCallResponse {
 export interface ILoadHistoryAPIResponse {
   message: string;
   success: boolean;
+}
+
+export interface IParsedLoadHistoryAPIResponse
+  extends Omit<ILoadHistoryAPIResponse, "message"> {
+  message: ILoadHistoryMethodCallResult;
 }

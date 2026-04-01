@@ -1,7 +1,10 @@
 import { BaseResource } from "./baseResource";
 import type {
+  IChatWhoAmIResponse,
   IHeaders,
   IUserListQuery,
+  IUserListByStatusResponse,
+  IUserPresenceResponse,
   ResponsePromise,
   IUserSetAvatarRequest,
 } from "../types";
@@ -36,9 +39,9 @@ class ChatUserResource extends BaseResource {
     query?: IUserListQuery,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IUserListByStatusResponse> {
     const path = `/users.listByStatus${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<IUserListByStatusResponse>(
       "GET",
       path,
       {},
@@ -57,11 +60,11 @@ class ChatUserResource extends BaseResource {
     userIds: string[],
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IUserPresenceResponse> {
     const idsArray = Array.isArray(userIds) ? userIds : [];
     const query = { ids: idsArray };
     const path = `/users.presence${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<IUserPresenceResponse>(
       "GET",
       path,
       {},
@@ -75,9 +78,9 @@ class ChatUserResource extends BaseResource {
   chatWhoAmI(
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IChatWhoAmIResponse> {
     const path = `/me`;
-    return this.client.request(
+    return this.client.request<IChatWhoAmIResponse>(
       "GET",
       path,
       {},

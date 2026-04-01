@@ -14,12 +14,15 @@ import type {
   IRoomFavoritePayload,
   IRoomGetDiscussionsQuery,
   IRoomGetQuery,
+  IRoomsGetResponse,
   IRoomHidePayload,
   IRoomImagesQuery,
   IRoomInfoQuery,
   IRoomLeavePayload,
+  IRoomMediaConfirmResponse,
   IRoomMediaConfirmPayload,
   IRoomMediaUploadPayload,
+  IRoomMediaUploadResponse,
   IRoomMuteUserPayload,
   IRoomNameExistsQuery,
   IRoomRolesQuery,
@@ -121,9 +124,9 @@ class RoomResource extends BaseResource {
     query?: IRoomGetQuery,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IRoomsGetResponse> {
     const path = `/rooms.get${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<IRoomsGetResponse>(
       "GET",
       path,
       {},
@@ -457,7 +460,7 @@ class RoomResource extends BaseResource {
     payload: IRoomMediaUploadPayload,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IRoomMediaUploadResponse> {
     const { rid, file, msg } = payload;
     const path = `/rooms.media/${rid}`;
 
@@ -466,7 +469,7 @@ class RoomResource extends BaseResource {
     if (msg) {
       formData.append("msg", msg);
     }
-    return this.client.request(
+    return this.client.request<IRoomMediaUploadResponse>(
       "POST",
       path,
       formData,
@@ -485,10 +488,10 @@ class RoomResource extends BaseResource {
     payload: IRoomMediaConfirmPayload,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IRoomMediaConfirmResponse> {
     const { rid, fileId } = payload;
     const path = `/rooms.mediaConfirm/${rid}/${fileId}`;
-    return this.client.request(
+    return this.client.request<IRoomMediaConfirmResponse>(
       "POST",
       path,
       {},

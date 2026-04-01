@@ -1,6 +1,6 @@
 {
   "name": "rocketchat-ts-sdk",
-  "version": "1.4.2",
+  "version": "1.4.6",
   "description": "A TypeScript SDK for RocketChat API",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

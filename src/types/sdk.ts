@@ -13,5 +13,5 @@ export interface RocketChatResponse<T = any> {
   errorType?: string;
 }
 
-export type ResponsePromise = Promise<RocketChatResponse<any>>;
+export type ResponsePromise<T = any> = Promise<RocketChatResponse<T>>;
 export type IHeaders = Record<string, string>;

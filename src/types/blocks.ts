@@ -91,7 +91,6 @@ export interface LinkPreviewBlock extends BaseMessageBlock {
 export interface ButtonBlock extends BaseMessageBlock {
   type: "button";
   text: string;
-  actionId: string;
   value?: string;
   style?: "primary" | "secondary" | "danger";
   url?: string;
@@ -102,7 +101,6 @@ export interface ButtonBlock extends BaseMessageBlock {
 export interface SelectBlock extends BaseMessageBlock {
   type: "select";
   placeholder: string;
-  actionId: string;
   options: SelectOption[];
   initialOption?: SelectOption;
 }
@@ -115,7 +113,6 @@ export interface SelectOption {
 export interface DatePickerBlock extends BaseMessageBlock {
   type: "date_picker";
   placeholder: string;
-  actionId: string;
   initialDate?: string;
 }
 
@@ -160,6 +157,7 @@ export type MessageBlockType =
 export interface BaseMessageBlock {
   type: MessageBlockType;
   id?: string;
+  actionId?: string;
 }
 
 // Text Block
@@ -248,7 +246,6 @@ export interface LinkPreviewBlock extends BaseMessageBlock {
 export interface ButtonBlock extends BaseMessageBlock {
   type: "button";
   text: string;
-  actionId: string;
   value?: string;
   style?: "primary" | "secondary" | "danger";
   url?: string;
@@ -259,7 +256,6 @@ export interface ButtonBlock extends BaseMessageBlock {
 export interface SelectBlock extends BaseMessageBlock {
   type: "select";
   placeholder: string;
-  actionId: string;
   options: SelectOption[];
   initialOption?: SelectOption;
 }
@@ -272,7 +268,6 @@ export interface SelectOption {
 export interface DatePickerBlock extends BaseMessageBlock {
   type: "date_picker";
   placeholder: string;
-  actionId: string;
   initialDate?: string;
 }
 

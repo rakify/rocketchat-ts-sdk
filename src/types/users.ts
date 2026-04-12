@@ -166,6 +166,30 @@ export interface IUserListByStatusResponse {
   success: boolean;
 }
 
+export interface IUserInfo {
+  _id: string;
+  createdAt: string;
+  username: string;
+  emails: Array<{
+    address: string;
+    verified: boolean;
+  }>;
+  type: string;
+  roles: string[];
+  status: string;
+  active: boolean;
+  name: string;
+  lastLogin: string;
+  statusConnection: string;
+  avatarETag?: string;
+  canViewAllInfo?: boolean;
+}
+
+export interface IUserInfoResponse {
+  user: IUserInfo;
+  success: boolean;
+}
+
 export interface IUserSetAvatarRequest {
   avatarUrl?: string;
   userId?: string;

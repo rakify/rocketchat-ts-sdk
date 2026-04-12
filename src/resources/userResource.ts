@@ -5,6 +5,7 @@ import type {
   IUserListQuery,
   IUserListByStatusResponse,
   IUserPresenceResponse,
+  IUserInfoResponse,
   ResponsePromise,
   IUserSetAvatarRequest,
 } from "../types";
@@ -81,6 +82,30 @@ class ChatUserResource extends BaseResource {
   ): ResponsePromise<IChatWhoAmIResponse> {
     const path = `/me`;
     return this.client.request<IChatWhoAmIResponse>(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
+  }
+
+  /**
+   * @description Gets information about a specific user
+   * @param userId The user ID to get information for
+   * @param customHeaders Custom headers for the request
+   * @param signal Abort signal for the request
+   */
+  userInfo(
+    userId: string,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise<IUserInfoResponse> {
+    const query = { userId };
+    const path = `/users.info${this.addQuery(query)}`;
+    return this.client.request<IUserInfoResponse>(
       "GET",
       path,
       {},

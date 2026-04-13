@@ -183,6 +183,7 @@ export interface IUserInfo {
   statusConnection: string;
   avatarETag?: string;
   canViewAllInfo?: boolean;
+  bio?: string;
 }
 
 export interface IUserInfoResponse {

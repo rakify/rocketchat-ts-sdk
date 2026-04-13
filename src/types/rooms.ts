@@ -582,3 +582,43 @@ export interface IRoomMediaConfirmResponse {
   _updatedAt: string;
   urls: string[];
 }
+
+export interface IRoomImageFile {
+  _id: string;
+  name: string;
+  size: number;
+  type: string;
+  rid: string;
+  userId: string;
+  content: null;
+  AmazonS3?: {
+    path: string;
+  };
+  store: string;
+  _updatedAt: string;
+  identify?: {
+    format: string;
+    size: {
+      width: number;
+      height: number;
+    };
+  };
+  complete: boolean;
+  etag: string;
+  path: string;
+  progress: number;
+  token: string;
+  uploadedAt: string;
+  uploading: boolean;
+  url: string;
+  typeGroup: string;
+  description: string | null;
+}
+
+export interface IRoomImagesResponse {
+  files: IRoomImageFile[];
+  count: number;
+  offset: number;
+  total: number;
+  success: boolean;
+}

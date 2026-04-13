@@ -17,6 +17,7 @@ import type {
   IRoomsGetResponse,
   IRoomHidePayload,
   IRoomImagesQuery,
+  IRoomImagesResponse,
   IRoomInfoQuery,
   IRoomLeavePayload,
   IRoomMediaConfirmResponse,
@@ -397,9 +398,9 @@ class RoomResource extends BaseResource {
     query: IRoomImagesQuery,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IRoomImagesResponse> {
     const path = `/rooms.images${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<IRoomImagesResponse>(
       "GET",
       path,
       {},

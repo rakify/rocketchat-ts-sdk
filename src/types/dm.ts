@@ -22,6 +22,12 @@ export interface IDmMessageAttachment {
   title_link_download: boolean;
   ts: string;
   video_url?: string;
+
+  image_dimensions?: {
+    width: number;
+    height: number;
+  };
+  fileId?: string;
 }
 
 export interface IDmMessageSnippet {

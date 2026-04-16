@@ -97,6 +97,10 @@ export interface IDmCreateResponse {
   success: boolean;
 }
 
+export interface IDmCreateCachedQuery {
+  username: string;
+}
+
 export interface IDmDeletePayload {
   roomId?: string;
   username?: string;

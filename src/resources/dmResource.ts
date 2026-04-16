@@ -2,7 +2,9 @@ import { BaseResource } from "./baseResource";
 import type {
   IDmClosePayload,
   IDmCountersQuery,
+  IDmCreateCachedQuery,
   IDmCreatePayload,
+  IDmCreateResponse,
   IDmDeletePayload,
   IDmFilesQuery,
   IDmHistoryQuery,
@@ -77,6 +79,27 @@ class DmResource extends BaseResource {
       "POST",
       path,
       payload,
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
+  }
+
+  /**
+   * @description Creates a cached direct message session,
+   * accepts query with username
+   */
+  createCached(
+    query: IDmCreateCachedQuery,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise<IDmCreateResponse> {
+    const path = `/dm.create.cached${this.addQuery(query)}`;
+    return this.client.request<IDmCreateResponse>(
+      "GET",
+      path,
+      {},
       {},
       customHeaders,
       false,

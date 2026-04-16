@@ -27,6 +27,10 @@ export interface IChatReportMessagePayload {
   description: string;
 }
 
+export interface IChatReportMessageResponse {
+  success: boolean;
+}
+
 export interface IChatFollowMessagePayload {
   mid: string;
 }
@@ -207,7 +211,9 @@ export interface ILoadHistoryAPIResponse {
   success: boolean;
 }
 
-export interface IParsedLoadHistoryAPIResponse
-  extends Omit<ILoadHistoryAPIResponse, "message"> {
+export interface IParsedLoadHistoryAPIResponse extends Omit<
+  ILoadHistoryAPIResponse,
+  "message"
+> {
   message: ILoadHistoryMethodCallResult;
 }

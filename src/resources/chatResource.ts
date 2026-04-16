@@ -17,6 +17,7 @@ import type {
   IChatPostMessagePayload,
   IChatReactPayload,
   IChatReportMessagePayload,
+  IChatReportMessageResponse,
   IChatSendMessagePayload,
   IChatStarMessagePayload,
   IChatSyncMessagesQuery,
@@ -104,9 +105,9 @@ class ChatResource extends BaseResource {
     payload: IChatReportMessagePayload,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IChatReportMessageResponse> {
     const path = `/chat.reportMessage`;
-    return this.client.request(
+    return this.client.request<IChatReportMessageResponse>(
       "POST",
       path,
       payload,

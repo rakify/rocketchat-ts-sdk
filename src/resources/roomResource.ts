@@ -3,6 +3,7 @@ import type {
   IHeaders,
   IRoomAdminRoomsGetRoomQuery,
   IRoomAdminRoomsQuery,
+  IRoomAdminRoomsResponse,
   IRoomAuditMembersQuery,
   IRoomAutocompleteAdminRoomsQuery,
   IRoomAutocompleteChannelAndPrivateQuery,
@@ -41,9 +42,9 @@ class RoomResource extends BaseResource {
     query: IRoomAdminRoomsQuery,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
-  ): ResponsePromise {
+  ): ResponsePromise<IRoomAdminRoomsResponse> {
     const path = `/rooms.adminRooms${this.addQuery(query)}`;
-    return this.client.request(
+    return this.client.request<IRoomAdminRoomsResponse>(
       "GET",
       path,
       {},

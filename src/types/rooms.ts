@@ -271,8 +271,55 @@ export interface IGroupConvertToTeamPayload {
   roomId: string;
 }
 
-export interface IRoomAdminRoomsQuery {
+export interface IRoomAdminRoomsQuery extends IPaginationQuery {
+  filter?: string;
   types?: string[];
+  sort?: string;
+}
+
+export interface IRoomAdminRoom {
+  _id: string;
+  t: string;
+  usernames?: string[];
+  usersCount: number;
+  msgs: number;
+  ts: string;
+  uids?: string[];
+  default: boolean;
+  ro: boolean;
+  name?: string;
+  fname?: string;
+  description?: string;
+  topic?: string;
+  announcement?: string;
+  customFields?: Record<string, any>;
+  broadcast?: boolean;
+  encrypted?: boolean;
+  sysMes?: boolean;
+  lastMessage?: any;
+  lm?: string;
+  muted?: string[];
+  unmuted?: string[];
+  reactWhenReadOnly?: boolean;
+  archived?: boolean;
+  joinCodeRequired?: boolean;
+  joinCode?: string;
+  teamId?: string;
+  teamMain?: boolean;
+  u?: {
+    _id: string;
+    username: string;
+    name?: string;
+  };
+  _updatedAt?: string;
+}
+
+export interface IRoomAdminRoomsResponse {
+  rooms: IRoomAdminRoom[];
+  count: number;
+  offset: number;
+  total: number;
+  success: boolean;
 }
 
 export interface IRoomCleanHistoryPayload {

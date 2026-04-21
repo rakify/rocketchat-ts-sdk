@@ -17,6 +17,11 @@ export interface IUserPresenceResponse {
   success: boolean;
 }
 
+export interface IUserPresenceQuery {
+  ids: string[];
+  from?: string;
+}
+
 export interface IUserListQuery {
   count?: number;
   offset?: number;

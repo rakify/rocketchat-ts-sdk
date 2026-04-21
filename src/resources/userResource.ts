@@ -4,6 +4,7 @@ import type {
   IHeaders,
   IUserListQuery,
   IUserListByStatusResponse,
+  IUserPresenceQuery,
   IUserPresenceResponse,
   IUserInfoResponse,
   ResponsePromise,
@@ -55,16 +56,24 @@ class ChatUserResource extends BaseResource {
 
   /**
    * @description Gets presence information for specified users
-   * @param userIds Array of user IDs to get presence for
+   * @param query Object containing userIds array and optional from date
    */
   userPresence(
-    userIds: string[],
+    query: IUserPresenceQuery,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
   ): ResponsePromise<IUserPresenceResponse> {
-    const idsArray = Array.isArray(userIds) ? userIds : [];
-    const query = { ids: idsArray };
-    const path = `/users.presence${this.addQuery(query)}`;
+    const queryParams: any = {};
+
+    if (query.ids && query.ids.length > 0) {
+      queryParams.ids = query.ids;
+    }
+
+    if (query.from) {
+      queryParams.from = query.from;
+    }
+
+    const path = `/users.presence${this.addQuery(queryParams)}`;
     return this.client.request<IUserPresenceResponse>(
       "GET",
       path,

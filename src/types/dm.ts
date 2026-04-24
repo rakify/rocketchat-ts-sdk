@@ -3,7 +3,12 @@ import { IUser } from "./messaging";
 
 export interface IMarkdownNode {
   type: string;
-  value: IMarkdownNode[] | string;
+  value: IMarkdownNode[] | string | IMarkdownLinkValue;
+}
+
+export interface IMarkdownLinkValue {
+  src: IMarkdownNode;
+  label: IMarkdownNode[];
 }
 
 export interface IMongoDate {
@@ -40,6 +45,35 @@ export interface IDmMessageSnippet {
   ts: IMongoDate;
 }
 
+export interface IUrlMeta {
+  pageTitle?: string;
+  title?: string;
+  description?: string;
+  ogSiteName?: string;
+  ogUrl?: string;
+  ogType?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogLocale?: string;
+  twitterCard?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  twitterUrl?: string;
+  twitterSite?: string;
+}
+
+export interface IUrlHeaders {
+  contentType?: string;
+}
+
+export interface IUrl {
+  url: string;
+  meta?: IUrlMeta;
+  headers?: IUrlHeaders;
+}
+
 export interface IDmMessage {
   _id: string;
   rid: string;
@@ -47,7 +81,7 @@ export interface IDmMessage {
   ts: IMongoDate | string; // Can be MongoDB date object or ISO string
   u: IUser;
   _updatedAt: IMongoDate | string; // Can be MongoDB date object or ISO string
-  urls?: string[];
+  urls?: IUrl[];
   mentions?: any[];
   channels?: any[];
   md?: IMarkdownNode[];

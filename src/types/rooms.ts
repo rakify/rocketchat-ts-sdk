@@ -535,7 +535,7 @@ export interface ISubscription {
   usernames?: string[];
   lm?: string;
   lastMessage?: IDmMessage;
-  msgs: number;
+  msgs?: number;
   uids?: string[];
 }
 

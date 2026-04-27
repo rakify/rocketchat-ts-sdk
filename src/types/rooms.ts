@@ -512,6 +512,7 @@ export interface IRocketChatUser {
 }
 
 export interface ISubscription {
+  // combination of room (necessary data) and subscription data
   _id: string;
   open: boolean;
   alert: boolean;
@@ -534,6 +535,7 @@ export interface ISubscription {
   usernames?: string[];
   lm?: string;
   lastMessage?: IDmMessage;
+  msgs: number;
   uids?: string[];
 }
 

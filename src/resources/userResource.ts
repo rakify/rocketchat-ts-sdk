@@ -103,16 +103,18 @@ class ChatUserResource extends BaseResource {
 
   /**
    * @description Gets information about a specific user
-   * @param userId The user ID to get information for
+   * @param payload Object containing either userId or username to identify the user
    * @param customHeaders Custom headers for the request
    * @param signal Abort signal for the request
    */
   userInfo(
-    userId: string,
+    payload: { userId?: string; username?: string },
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
   ): ResponsePromise<IUserInfoResponse> {
-    const query = { userId };
+    const query = payload.username
+      ? { username: payload.username }
+      : { userId: payload.userId };
     const path = `/users.info${this.addQuery(query)}`;
     return this.client.request<IUserInfoResponse>(
       "GET",

@@ -4,6 +4,7 @@ import type {
   IHeaders,
   ILoadHistoryAPIResponse,
   IParsedLoadHistoryAPIResponse,
+  LoadMethod,
   ResponsePromise,
 } from "../types";
 
@@ -12,15 +13,16 @@ import type {
 
 class MethodCallResource extends BaseResource {
   /**
-   * @description Calls a method on the server,
+   * @description Calls a load method on the server (loadHistory, loadSurroundingMessages, loadNextMessages),
    * accepts payload with message containing method details
    */
-  async loadHistory(
+  async callLoadMethod(
+    methodName: LoadMethod,
     payload: IChatMethodCallPayload,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
   ): ResponsePromise<IParsedLoadHistoryAPIResponse> {
-    const path = `/method.call/loadHistory`;
+    const path = `/method.call/${methodName}`;
     const response = await this.client.request<ILoadHistoryAPIResponse>(
       "POST",
       path,

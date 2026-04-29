@@ -1,5 +1,10 @@
 import { IDmMessage } from "./dm";
-import { MessageBlock } from "./blocks";
+
+export enum LoadMethod {
+  LoadHistory = "loadHistory",
+  LoadSurroundingMessages = "loadSurroundingMessages",
+  LoadNextMessages = "loadNextMessages",
+}
 
 export interface IChatDeletePayload {
   roomId: string;

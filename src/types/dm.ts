@@ -94,6 +94,22 @@ export interface IDmMessage {
   attachments?: (IDmMessageAttachment | IDmMessageSnippet)[];
   file?: any;
   files?: any[];
+  groupable?: boolean;
+  customFields?: Record<string, any>;
+  avatar?: string;
+  emoji?: string;
+  reactions?: {
+    [key: string]: {
+      names?: string[];
+      usernames: string[];
+      federationReactionEventIds?: Record<string, string>;
+    };
+  };
+  starred?: { _id: IUser["_id"] }[];
+  pinned?: boolean;
+  pinnedAt?: Date;
+  pinnedBy?: Pick<IUser, "_id" | "username">;
+  replies?: IUser["_id"][];
 }
 
 export interface IDmMessagesResponse {

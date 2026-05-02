@@ -222,3 +222,37 @@ export interface IParsedLoadHistoryAPIResponse extends Omit<
 > {
   message: ILoadHistoryMethodCallResult;
 }
+
+export interface IGetRoomByTypeAndNameMethodCallResult {
+  msg: string;
+  id: string;
+  result: {
+    _id: string;
+    t: string;
+    _updatedAt: {
+      $date: number;
+    };
+    default: boolean;
+    usersCount: number;
+    msgs: number;
+    ro: boolean;
+    sysMes: boolean;
+    ts: {
+      $date: number;
+    };
+    usernames: string[];
+    uids: string[];
+  };
+}
+
+export interface IGetRoomByTypeAndNameAPIResponse {
+  message: string;
+  success: boolean;
+}
+
+export interface IParsedGetRoomByTypeAndNameAPIResponse extends Omit<
+  IGetRoomByTypeAndNameAPIResponse,
+  "message"
+> {
+  message: IGetRoomByTypeAndNameMethodCallResult;
+}

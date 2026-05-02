@@ -1,8 +1,10 @@
 import { BaseResource } from "./baseResource";
 import type {
   IChatMethodCallPayload,
+  IGetRoomByTypeAndNameAPIResponse,
   IHeaders,
   ILoadHistoryAPIResponse,
+  IParsedGetRoomByTypeAndNameAPIResponse,
   IParsedLoadHistoryAPIResponse,
   LoadMethod,
   ResponsePromise,
@@ -32,6 +34,44 @@ class MethodCallResource extends BaseResource {
       false,
       signal,
     );
+
+    if (response.success && response.data) {
+      return {
+        success: true,
+        data: {
+          ...response.data,
+          message: JSON.parse(response.data.message),
+        },
+      };
+    }
+
+    return {
+      success: response.success,
+      error: response.error,
+      errorType: response.errorType,
+    };
+  }
+
+  /**
+   * @description Calls the getRoomByTypeAndName method on the server,
+   * accepts payload with message containing method details
+   */
+  async getRoomByTypeAndName(
+    payload: IChatMethodCallPayload,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise<IParsedGetRoomByTypeAndNameAPIResponse> {
+    const path = `/method.call/getRoomByTypeAndName`;
+    const response =
+      await this.client.request<IGetRoomByTypeAndNameAPIResponse>(
+        "POST",
+        path,
+        payload,
+        {},
+        customHeaders,
+        false,
+        signal,
+      );
 
     if (response.success && response.data) {
       return {

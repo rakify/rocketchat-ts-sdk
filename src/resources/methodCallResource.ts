@@ -6,7 +6,7 @@ import type {
   ILoadHistoryAPIResponse,
   IParsedGetRoomByTypeAndNameAPIResponse,
   IParsedLoadHistoryAPIResponse,
-  LoadMethod,
+  MethodName,
   ResponsePromise,
 } from "../types";
 
@@ -18,8 +18,8 @@ class MethodCallResource extends BaseResource {
    * @description Calls a load method on the server (loadHistory, loadSurroundingMessages, loadNextMessages),
    * accepts payload with message containing method details
    */
-  async callLoadMethod(
-    methodName: LoadMethod,
+  async callMethod(
+    methodName: MethodName,
     payload: IChatMethodCallPayload,
     customHeaders: IHeaders = {},
     signal?: AbortSignal,

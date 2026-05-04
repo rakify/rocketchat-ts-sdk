@@ -68,7 +68,7 @@ export class RocketChatSDK {
 
 // Export all types and classes
 export * from "./types";
-export { LoadMethod } from "./types/messaging";
+export { MethodName } from "./types/messaging";
 export { RocketChatClient } from "./client";
 export { default as ChannelResource } from "./resources/channelResource";
 export { default as ChatResource } from "./resources/chatResource";

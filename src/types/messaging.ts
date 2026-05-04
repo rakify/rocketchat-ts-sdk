@@ -1,6 +1,6 @@
 import { IDmMessage } from "./dm";
 
-export enum LoadMethod {
+export enum MethodName {
   LoadHistory = "loadHistory",
   LoadSurroundingMessages = "loadSurroundingMessages",
   LoadNextMessages = "loadNextMessages",

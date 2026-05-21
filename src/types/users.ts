@@ -30,6 +30,7 @@ export interface IUserListQuery {
   query?: Record<string, any>;
   roles?: string[];
   searchTerm?: string;
+  status?: "active" | "deactivated";
 }
 
 export interface IUserListResponse {

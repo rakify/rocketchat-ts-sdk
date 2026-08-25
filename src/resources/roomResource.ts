@@ -491,12 +491,12 @@ class RoomResource extends BaseResource {
     customHeaders: IHeaders = {},
     signal?: AbortSignal,
   ): ResponsePromise<IRoomMediaConfirmResponse> {
-    const { rid, fileId } = payload;
+    const { rid, fileId, msg, tmid } = payload;
     const path = `/rooms.mediaConfirm/${rid}/${fileId}`;
     return this.client.request<IRoomMediaConfirmResponse>(
       "POST",
       path,
-      {},
+      { msg, tmid },
       {},
       customHeaders,
       false,

@@ -80,6 +80,10 @@ export interface IDmMessage {
   msg: string;
   ts: IMongoDate | string; // Can be MongoDB date object or ISO string
   u: IUser;
+  // Set for system/event messages (e.g. "au" = user added, "ru" = user
+  // removed, "r" = room renamed, "uj"/"ul" = user joined/left). Absent on
+  // regular chat messages.
+  t?: string;
   _updatedAt: IMongoDate | string; // Can be MongoDB date object or ISO string
   urls?: IUrl[];
   mentions?: any[];

@@ -537,6 +537,7 @@ export interface ISubscription {
   lastMessage?: IDmMessage;
   msgs?: number;
   uids?: string[];
+  f?: boolean;
 }
 
 export interface ISubscriptionsGetResponse {

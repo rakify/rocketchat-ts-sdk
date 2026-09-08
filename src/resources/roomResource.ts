@@ -25,6 +25,8 @@ import type {
   IRoomMediaConfirmPayload,
   IRoomMediaUploadPayload,
   IRoomMediaUploadResponse,
+  IRoomMembersOrderedByRoleQuery,
+  IRoomMembersOrderedByRoleResponse,
   IRoomMuteUserPayload,
   IRoomNameExistsQuery,
   IRoomRolesQuery,
@@ -402,6 +404,27 @@ class RoomResource extends BaseResource {
   ): ResponsePromise<IRoomImagesResponse> {
     const path = `/rooms.images${this.addQuery(query)}`;
     return this.client.request<IRoomImagesResponse>(
+      "GET",
+      path,
+      {},
+      {},
+      customHeaders,
+      false,
+      signal,
+    );
+  }
+
+  /**
+   * @description Gets a room's members ordered by role (owners first),
+   * with each member's roles and optional status/name filters
+   */
+  roomMembersOrderedByRole(
+    query: IRoomMembersOrderedByRoleQuery,
+    customHeaders: IHeaders = {},
+    signal?: AbortSignal,
+  ): ResponsePromise<IRoomMembersOrderedByRoleResponse> {
+    const path = `/rooms.membersOrderedByRole${this.addQuery(query)}`;
+    return this.client.request<IRoomMembersOrderedByRoleResponse>(
       "GET",
       path,
       {},

@@ -672,3 +672,33 @@ export interface IRoomImagesResponse {
   total: number;
   success: boolean;
 }
+
+export interface IRoomMembersOrderedByRoleQuery
+  extends IRoomIdOrNameQuery, IPaginationQuery {
+  status?: string[];
+  filter?: string;
+}
+
+export interface IRoomMemberWithRole {
+  _id: string;
+  username: string;
+  name?: string;
+  status?: string;
+  avatarETag?: string;
+  nickname?: string;
+  _updatedAt?: string;
+  subscription?: {
+    _id: string;
+    ts?: string;
+    roles?: string[];
+  };
+  roles?: string[];
+}
+
+export interface IRoomMembersOrderedByRoleResponse {
+  members: IRoomMemberWithRole[];
+  count: number;
+  offset: number;
+  total: number;
+  success: boolean;
+}

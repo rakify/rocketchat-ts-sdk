@@ -84,6 +84,9 @@ export interface IDmMessage {
   // removed, "r" = room renamed, "uj"/"ul" = user joined/left). Absent on
   // regular chat messages.
   t?: string;
+  // Set on "subscription-role-added"/"subscription-role-removed" system
+  // messages to indicate which room role (owner/moderator/leader) changed.
+  role?: string;
   _updatedAt: IMongoDate | string; // Can be MongoDB date object or ISO string
   urls?: IUrl[];
   mentions?: any[];

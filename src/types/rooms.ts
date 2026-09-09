@@ -368,7 +368,7 @@ export interface IRoomAdminRoomsGetRoomQuery {
 }
 
 export interface IRoomSaveRoomSettingsPayload {
-  roomId: string;
+  rid: string;
   roomName?: string;
   roomTopic?: string;
   roomAnnouncement?: string;
